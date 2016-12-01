@@ -1,0 +1,64 @@
+{%  extends "base.html" %}
+{%  import "bootstrap/wtf.html" as wtf %}
+
+{%  block page_content %}
+
+
+    </br>
+
+    <form class="form form-horizontal" method="post" role="form">
+        {{ form.hidden_tag() }}
+        {{ wtf.form_errors(form, hiddens="only") }}
+
+        <div class="col-md-offset-1">
+
+            <div class="form-group">
+                <div>
+                    We are trying to determine the best course of action for <a href="https://omscs-study.slack.com/">https://omscs-study.slack.com/</a> group archives.
+                    Currently, many of the Slack channels are <b>archived publicly</b> at <a href="http://omscs-study.slackarchive.io/">http://omscs-study.slackarchive.io/</a>. However, it is difficult to ensure that all students are aware of the archives, and are open to it due to privacy concerns. Please answer these questions and help us determine the future course of action.
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-offset-1 control-label"></label>
+                <div class="col-md-2 center-block ">
+                    {{ wtf.form_field(form.user, form_type="vertical", horizontal_columns=('md', 4, 1)) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.choice1.label }}</label>
+                {{ wtf.form_field(form.choice1) }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.choice2.label }}</label>
+                {{ wtf.form_field(form.choice2) }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.choice3.label }}</label>
+                {{ wtf.form_field(form.choice3) }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.choice4.label }}</label>
+                {{ wtf.form_field(form.choice4, form_type="inline") }}
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-offset-1 control-label"></label>
+                <div class="col-md-5 center-block ">
+                    {{ wtf.form_field(form.general, form_type="vertical", horizontal_columns=('md', 4, 4)) }}
+                </div>
+            </div>
+
+            {{ wtf.form_field(form.submit) }}
+
+
+        </div>
+
+    </form>
+
+{% endblock %}
