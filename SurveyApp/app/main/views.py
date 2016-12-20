@@ -33,4 +33,4 @@ def login():
         insert_survey_result(slack, choice1, choice2, choice3, choice4, general)
         return render_template("thanks.html")
 
-    return render_template("survey.html", form=survey_form)
+    return render_template("participant.html", form=survey_form)
