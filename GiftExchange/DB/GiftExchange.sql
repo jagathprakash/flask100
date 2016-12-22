@@ -9,8 +9,8 @@ DROP DATABASE IF EXISTS `GiftExchange`;
 CREATE DATABASE `GiftExchange` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `GiftExchange`;
 
-DROP TABLE IF EXISTS `participants`;
-CREATE TABLE `participants` (
+DROP TABLE IF EXISTS `Participants`;
+CREATE TABLE `Participants` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
