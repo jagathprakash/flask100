@@ -1,4 +1,7 @@
+from flask import redirect
 from flask import render_template
+from flask import url_for
+
 from .forms import ParticipantForm
 from ..models import db_session
 from . import main
@@ -18,6 +21,12 @@ def insert_survey_result(name, email, address, gifts, charity):
     db_session.commit()
 
 
+@main.route("/thanks", methods=['GET'])
+def thanks():
+    return render_template("thanks.html")
+
+
+
 @main.route("/", methods=['GET', 'POST'])
 def login():
     participant = ParticipantForm()
@@ -28,6 +37,6 @@ def login():
         gifts = participant.gifts.data
         charity = participant.charity.data
         insert_survey_result(name, email, address, gifts, charity)
-        return render_template("thanks.html")
+        return redirect(url_for("main.thanks"))
 
     return render_template("participant.html", form=participant)
