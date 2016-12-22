@@ -10,7 +10,7 @@ from sqlalchemy import text
 
 
 def insert_survey_result(name, email, address, gifts, charity):
-    s = text("INSERT INTO Participants VALUES (:name, :email, :address, :gifts, :charity)").bindparams(
+    s = text("INSERT INTO Participants VALUES (NULL, :name, :email, :address, :gifts, :charity)").bindparams(
         name=name,
         email=email,
         address=address,
