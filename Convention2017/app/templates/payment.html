@@ -1,0 +1,27 @@
+{%  extends "base.html" %}
+{%  import "bootstrap/wtf.html" as wtf %}
+
+{%  block page_content %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><h3><p class="page-header text-center text-capitalize">{{ cost }}</p></h3></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><h3><p class="page-header text-center text-capitalize">{{ donation }}</p></h3></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><h3><p class="page-header text-center text-capitalize">{{ total }}</p></h3></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <a href="/logout"><h2><p class="text-center">Pay Now</p></h2></a>
+
+        </div>
+    </div>
+
+{% endblock %}
+
