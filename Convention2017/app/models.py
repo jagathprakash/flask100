@@ -8,24 +8,6 @@ from sqlalchemy.orm import sessionmaker, relationship
 
 Base = declarative_base()
 
-MYSQL_USER_PASS="{username}:{password}".format(
-        username="root",
-        password=os.environ.get("MYSQL_PASSWORD", ""))
-
-MYSQL_DATABASE="mydb"
-MYSQL_HOST_PORT="127.0.0.1:3306"
-
-engine = create_engine("mysql+mysqldb://{mysql_user_pass}@{mysql_host_port}/{mysql_database}".format(
-        mysql_user_pass=MYSQL_USER_PASS,
-        mysql_host_port=MYSQL_HOST_PORT,
-        mysql_database=MYSQL_DATABASE))
-
-conn = engine.connect()
-
-Session = sessionmaker(bind=engine)
-db_session = Session()
-
-
 class Registration(Base):
     __tablename__ = 'Registration'
     email = Column(String, primary_key=True)

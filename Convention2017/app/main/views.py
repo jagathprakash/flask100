@@ -5,11 +5,10 @@ from wtforms import StringField, SubmitField, Label, Field, RadioField, SelectFi
 from wtforms.validators import DataRequired
 
 from .forms import RegistrationForm, MembersForm
-from ..models import db_session
+
 from . import main
 
 from sqlalchemy import text
-
 
 @main.route("/thanks", methods=['GET'])
 def thanks():
@@ -17,6 +16,7 @@ def thanks():
 
 
 def insert_registration_record(email, FirstName, FamilyName, cost, donation, paid, Address, State):
+    db_session = app.config.db_session
     s = text("INSERT INTO Registration VALUES (:email, :FirstName, :FamilyName, :cost, :donation, :paid, :Address, "
              ":State)").bindparams(
             email=email,
@@ -34,6 +34,7 @@ def insert_registration_record(email, FirstName, FamilyName, cost, donation, pai
 
 
 def insert_members_record(email, MemberFName, MemberLName):
+    db_session = app.config.db_session
     s = text("INSERT INTO Members VALUES (:RegistrationEmail, :MemberFName, :MemberLName)").bindparams(
             RegistrationEmail=email,
             MemberFName=MemberFName,

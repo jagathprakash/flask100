@@ -1,0 +1,32 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+#env: flex
+entrypoint: gunicorn -b :$PORT manage:app
+
+runtime_config:
+  python_version: 3
+
+#[START env]
+env_variables:
+    # Replace user, password, database, and instance connection name with the values obtained
+    # when configuring your Cloud SQL instance.
+    # mysql+pymysql://USER:PASSWORD@/DATABASE?unix_socket=/cloudsql/INSTANCE_CONNECTION_NAME
+    SQLALCHEMY_DATABASE_URI: >-
+      mysql+pymysql://root:kilangili@/DATABASE?unix_socket=/cloudsql/convention-177705:us-central1:conventiondb
+#[END env]
+
+#[START cloudsql_settings]
+# Replace project and instance with the values obtained  when configuring your
+# Cloud SQL instance.
+beta_settings:
+    cloud_sql_instances: convention-177705:us-central1:conventiondb
+#[END cloudsql_settings]
+
+# [START handlers]
+handlers:
+- url: /static
+  static_dir: app/static
+- url: /.*
+  script: manage.app
+# [END handlers]
