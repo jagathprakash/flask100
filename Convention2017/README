@@ -1,0 +1,4 @@
+To run the app, change to this dir.
+First install gcloud.
+pip install -t lib -r requirements.txt
+dev_appserver.py app.yaml
